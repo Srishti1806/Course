@@ -1,6 +1,7 @@
+import sys
+
 def calculate_final_price(price, discount):
-    final_price = price - (price * discount / 100)
-    return final_price
+    return price - (price * discount / 100)
 
 
 def classify_product(final_price):
@@ -15,18 +16,19 @@ def classify_product(final_price):
 
 
 def main():
-    product_id = input("Enter Product ID: ")
-    product_name = input("Enter Product Name: ")
-    category = input("Enter Category: ")
-    price = float(input("Enter Price: "))
-    discount = float(input("Enter Discount (%): "))
+    # Command-line arguments
+    product_id = sys.argv[1]
+    product_name = sys.argv[2]
+    category = sys.argv[3]
+    price = float(sys.argv[4])
+    discount = float(sys.argv[5])
 
     final_price = calculate_final_price(price, discount)
     classification = classify_product(final_price)
 
     print("\n--- Product Details ---")
     print("Product ID:", product_id)
-    print("Name:", product_name)
+    print("Product Name:", product_name)
     print("Category:", category)
     print("Final Price: ₹", final_price)
     print("Classification:", classification)
